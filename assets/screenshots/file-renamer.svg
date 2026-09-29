@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img" aria-label="File renaming tool preview">
+  <defs>
+    <linearGradient id="bar3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1d4ed8"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" rx="12" fill="#ffffff" stroke="#dde4ee"/>
+  <path d="M12 0h376a12 12 0 0 1 12 12v26H0V12A12 12 0 0 1 12 0z" fill="#f1f5f9"/>
+  <circle cx="18" cy="19" r="5" fill="#f87171"/>
+  <circle cx="36" cy="19" r="5" fill="#fbbf24"/>
+  <circle cx="54" cy="19" r="5" fill="#34d399"/>
+  <rect x="74" y="11" width="180" height="16" rx="8" fill="#e2e8f0"/>
+  <text x="84" y="23" font-family="Segoe UI, sans-serif" font-size="10" fill="#64748b">rename_files.py — terminal</text>
+  <!-- terminal body -->
+  <rect x="16" y="46" width="368" height="140" rx="8" fill="#0f172a"/>
+  <g font-family="Consolas, monospace" font-size="11">
+    <text x="30" y="70" fill="#7dd3fc">$ python rename_files.py ./invoices</text>
+    <text x="30" y="92" fill="#94a3b8">Scanning folder... 240 files found</text>
+    <text x="30" y="114" fill="#94a3b8">Pattern: <tspan fill="#fbbf24">INV-YYMMDD-name</tspan></text>
+    <text x="30" y="136" fill="#4ade80">✓ 240 files renamed in 1.8s</text>
+    <text x="30" y="158" fill="#94a3b8">0 errors · 0 skipped</text>
+    <text x="30" y="178" fill="#7dd3fc">$ <tspan fill="#e2e8f0">_</tspan></text>
+  </g>
+  <!-- result chips -->
+  <g font-family="Segoe UI, sans-serif" font-size="10.5">
+    <rect x="16" y="196" width="176" height="30" rx="8" fill="#fef2f2" stroke="#fecaca"/>
+    <text x="28" y="215" fill="#b91c1c">scan001.pdf</text>
+    <text x="194" y="215" fill="#94a3b8">→</text>
+    <rect x="208" y="196" width="176" height="30" rx="8" fill="#f0fdf4" stroke="#bbf7d0"/>
+    <text x="220" y="215" fill="#15803d">INV-260301-dela-cruz.pdf</text>
+  </g>
+</svg>
