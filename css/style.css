@@ -312,7 +312,10 @@ main {
   right: 46px;
 }
 
-@media (min-width: 1180px) {
+/* 1181 rather than 1180 so this never overlaps the max-width: 1180px
+   rule further down — at exactly 1180px both would match and the
+   later one would win, making the breakpoint ambiguous. */
+@media (min-width: 1181px) {
   .hero__side {
     display: block;
   }
@@ -496,6 +499,11 @@ main {
 }
 
 /* ---- Tools marquee ---- */
+/* Print-only heading above the restored tools list */
+.tools-print-label {
+  display: none;
+}
+
 .tools-marquee {
   overflow: hidden;
   /* Fade the edges so items enter and leave instead of clipping */
@@ -1038,6 +1046,13 @@ main {
 /* ============================================================
    Mobile (≤ 900px)
    ============================================================ */
+/* Wide enough for the hero side captions to clear the viewport edge */
+@media (max-width: 1180px) {
+  .hero__side {
+    display: none;
+  }
+}
+
 @media (max-width: 900px) {
   .nav__toggle {
     display: flex;
@@ -1165,14 +1180,39 @@ main {
     break-inside: avoid;
   }
 
-  /* Tools list is a hidden marquee on screen, so restore it as
-     a plain wrapped list when printing */
+  /* The horizontal rule between the timeline and the contact block
+     would otherwise print as a full-width divider */
+  .hero__divider {
+    display: none;
+  }
+
+  /* The tools marquee is hidden on screen, so restore it as a plain
+     wrapped list when printing. .tools-print also carries .sr-only, so
+     the clipping properties have to be undone too — overriding display
+     alone leaves it invisible. */
+  .tools-print-label {
+    display: block;
+    font-size: 10pt;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #333;
+    margin-top: 0.75rem;
+  }
+
   .tools-print {
     display: block !important;
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
     list-style: none;
     font-size: 10pt;
     color: #333;
-    margin-top: 0.5rem;
   }
 
   .badge,
