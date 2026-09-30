@@ -100,6 +100,7 @@
       ".section__intro",
       ".summary-text",
       ".skill-card",
+      ".tools-marquee",
       ".project",
       ".timeline__item",
       ".remote-card",
@@ -149,9 +150,10 @@
     });
   }
 
-  /* ---- Contact form (Formspree via fetch) ---- */
+  /* ---- Contact form (composes a mailto: and hands off to the mail app) ---- */
   var form = document.getElementById("contact-form");
   var statusEl = document.getElementById("form-status");
+  var CONTACT_EMAIL = "luckyabitong@gmail.com";
 
   function showStatus(type, message) {
     if (!statusEl) return;
@@ -164,45 +166,36 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      var action = form.getAttribute("action") || "";
-      var btn = form.querySelector('button[type="submit"]');
+      var name = (form.elements.name.value || "").trim();
+      var email = (form.elements.email.value || "").trim();
+      var message = (form.elements.message.value || "").trim();
 
-      // Guard: Formspree ID not configured yet
-      if (action.indexOf("YOUR_FORM_ID") !== -1) {
-        showStatus(
-          "error",
-          "This form isn't connected yet — email me directly at luckyabitong@gmail.com."
-        );
+      if (!name || !email || !message) {
+        showStatus("error", "Please fill in your name, email, and a short message.");
         return;
       }
 
-      if (btn) {
-        btn.disabled = true;
-        btn.textContent = "Sending…";
-      }
+      var subject = "Portfolio enquiry from " + name;
+      var body =
+        message +
+        "\n\n---\n" +
+        "From: " + name +
+        "\nReply to: " + email;
 
-      fetch(action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { Accept: "application/json" },
-      })
-        .then(function (res) {
-          if (!res.ok) throw new Error("Bad response");
-          showStatus("success", "Thanks — your message is on its way. I'll reply within 24 hours.");
-          form.reset();
-        })
-        .catch(function () {
-          showStatus(
-            "error",
-            "Something went wrong sending your message — please email luckyabitong@gmail.com instead."
-          );
-        })
-        .finally(function () {
-          if (btn) {
-            btn.disabled = false;
-            btn.textContent = "Send Message";
-          }
-        });
+      var href =
+        "mailto:" +
+        CONTACT_EMAIL +
+        "?subject=" +
+        encodeURIComponent(subject) +
+        "&body=" +
+        encodeURIComponent(body);
+
+      showStatus(
+        "success",
+        "Opening your email app — press send there and I'll reply within 24 hours."
+      );
+
+      window.location.href = href;
     });
   }
 })();
