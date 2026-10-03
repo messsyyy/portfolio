@@ -381,27 +381,39 @@
 
         <div class="design-grid">
           <figure class="design-item">
-            <img class="design-item__img" src="assets/design/bacon.jpg" alt="Freddo Meatshop bacon packaging label" width="1000" height="600" loading="lazy">
+            <button type="button" class="design-item__btn" data-full="assets/design/bacon-view.jpg" data-caption="Bacon">
+              <img class="design-item__img" src="assets/design/bacon.jpg" alt="Freddo Meatshop bacon packaging label" width="1000" height="600" loading="lazy">
+            </button>
             <figcaption class="design-item__caption">Bacon</figcaption>
           </figure>
           <figure class="design-item">
-            <img class="design-item__img" src="assets/design/tapa.jpg" alt="Freddo Meatshop tapa packaging label" width="1000" height="600" loading="lazy">
+            <button type="button" class="design-item__btn" data-full="assets/design/tapa-view.jpg" data-caption="Tapa">
+              <img class="design-item__img" src="assets/design/tapa.jpg" alt="Freddo Meatshop tapa packaging label" width="1000" height="600" loading="lazy">
+            </button>
             <figcaption class="design-item__caption">Tapa</figcaption>
           </figure>
           <figure class="design-item">
-            <img class="design-item__img" src="assets/design/tocino.jpg" alt="Freddo Meatshop tocino packaging label" width="1000" height="600" loading="lazy">
+            <button type="button" class="design-item__btn" data-full="assets/design/tocino-view.jpg" data-caption="Tocino">
+              <img class="design-item__img" src="assets/design/tocino.jpg" alt="Freddo Meatshop tocino packaging label" width="1000" height="600" loading="lazy">
+            </button>
             <figcaption class="design-item__caption">Tocino</figcaption>
           </figure>
           <figure class="design-item">
-            <img class="design-item__img" src="assets/design/skinless-longganisa.jpg" alt="Freddo Meatshop skinless longganisa packaging label" width="1000" height="600" loading="lazy">
+            <button type="button" class="design-item__btn" data-full="assets/design/skinless-longganisa-view.jpg" data-caption="Skinless Longganisa">
+              <img class="design-item__img" src="assets/design/skinless-longganisa.jpg" alt="Freddo Meatshop skinless longganisa packaging label" width="1000" height="600" loading="lazy">
+            </button>
             <figcaption class="design-item__caption">Skinless Longganisa</figcaption>
           </figure>
           <figure class="design-item">
-            <img class="design-item__img" src="assets/design/cooked-ham.jpg" alt="Freddo Meatshop cooked ham packaging label" width="1000" height="600" loading="lazy">
+            <button type="button" class="design-item__btn" data-full="assets/design/cooked-ham-view.jpg" data-caption="Cooked Ham">
+              <img class="design-item__img" src="assets/design/cooked-ham.jpg" alt="Freddo Meatshop cooked ham packaging label" width="1000" height="600" loading="lazy">
+            </button>
             <figcaption class="design-item__caption">Cooked Ham</figcaption>
           </figure>
           <figure class="design-item">
-            <img class="design-item__img" src="assets/design/embutido.jpg" alt="Freddo Meatshop embutido packaging label" width="1000" height="600" loading="lazy">
+            <button type="button" class="design-item__btn" data-full="assets/design/embutido-view.jpg" data-caption="Embutido">
+              <img class="design-item__img" src="assets/design/embutido.jpg" alt="Freddo Meatshop embutido packaging label" width="1000" height="600" loading="lazy">
+            </button>
             <figcaption class="design-item__caption">Embutido</figcaption>
           </figure>
         </div>
@@ -591,6 +603,18 @@
       </div>
     </div>
   </footer>
+
+  <!-- Lightbox: full-size viewer for the Design Work gallery -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Packaging design viewer" hidden>
+    <button type="button" class="lightbox__close" aria-label="Close viewer">&times;</button>
+    <button type="button" class="lightbox__nav lightbox__nav--prev" aria-label="Previous design">&#10094;</button>
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" id="lightbox-img" alt="">
+      <figcaption class="lightbox__caption" id="lightbox-caption"></figcaption>
+    </figure>
+    <button type="button" class="lightbox__nav lightbox__nav--next" aria-label="Next design">&#10095;</button>
+    <p class="lightbox__counter" id="lightbox-counter" aria-hidden="true"></p>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

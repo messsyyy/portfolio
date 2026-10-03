@@ -199,4 +199,116 @@
       window.location.href = href;
     });
   }
+
+  /* ---- Design gallery lightbox (open on click, arrows + Escape) ---- */
+  var lightbox = document.getElementById("lightbox");
+
+  if (lightbox) {
+    var lbImg = document.getElementById("lightbox-img");
+    var lbCaption = document.getElementById("lightbox-caption");
+    var lbCounter = document.getElementById("lightbox-counter");
+    var lbTriggers = Array.prototype.slice.call(
+      document.querySelectorAll(".design-item__btn")
+    );
+    var lbIndex = 0;
+    var lbLastFocused = null;
+
+    function lbViewSrc(i) {
+      return lbTriggers[i].getAttribute("data-full");
+    }
+
+    function lbRender() {
+      var trigger = lbTriggers[lbIndex];
+      lbImg.src = lbViewSrc(lbIndex);
+      var thumb = trigger.querySelector("img");
+      lbImg.alt = thumb ? thumb.alt : "";
+      lbCaption.textContent = trigger.getAttribute("data-caption") || "";
+      lbCounter.textContent = lbIndex + 1 + " / " + lbTriggers.length;
+      // Preload the neighbours so next/prev feels instant
+      [lbIndex + 1, lbIndex - 1].forEach(function (n) {
+        var idx = (n + lbTriggers.length) % lbTriggers.length;
+        new Image().src = lbViewSrc(idx);
+      });
+    }
+
+    function lbOpen(i) {
+      lbIndex = i;
+      lbLastFocused = document.activeElement;
+      lbRender();
+      lightbox.hidden = false;
+      document.body.style.overflow = "hidden";
+      // Double rAF so the browser paints the 0-opacity state before fading in
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          lightbox.classList.add("is-open");
+        });
+      });
+      var closeBtn = lightbox.querySelector(".lightbox__close");
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function lbClose() {
+      lightbox.classList.remove("is-open");
+      document.body.style.overflow = "";
+      window.setTimeout(function () {
+        // Skip if reopened during the fade-out
+        if (!lightbox.classList.contains("is-open")) {
+          lightbox.hidden = true;
+          lbImg.removeAttribute("src");
+        }
+      }, 250);
+      if (lbLastFocused && lbLastFocused.focus) lbLastFocused.focus();
+    }
+
+    function lbStep(dir) {
+      lbIndex = (lbIndex + dir + lbTriggers.length) % lbTriggers.length;
+      lbRender();
+    }
+
+    lbTriggers.forEach(function (btn, i) {
+      btn.addEventListener("click", function () {
+        lbOpen(i);
+      });
+    });
+
+    // Click on the dimmed backdrop (not the image) closes
+    lightbox.addEventListener("click", function (e) {
+      if (e.target === lightbox) lbClose();
+    });
+
+    lightbox.querySelector(".lightbox__close").addEventListener("click", lbClose);
+    lightbox
+      .querySelector(".lightbox__nav--prev")
+      .addEventListener("click", function () {
+        lbStep(-1);
+      });
+    lightbox
+      .querySelector(".lightbox__nav--next")
+      .addEventListener("click", function () {
+        lbStep(1);
+      });
+
+    document.addEventListener("keydown", function (e) {
+      if (lightbox.hidden) return;
+      if (e.key === "Escape") {
+        lbClose();
+      } else if (e.key === "ArrowLeft") {
+        lbStep(-1);
+      } else if (e.key === "ArrowRight") {
+        lbStep(1);
+      } else if (e.key === "Tab") {
+        // Keep keyboard focus inside the dialog while it's open
+        var focusables = lightbox.querySelectorAll("button");
+        var first = focusables[0];
+        var last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+  }
 })();
