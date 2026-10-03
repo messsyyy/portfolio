@@ -662,6 +662,53 @@ main {
   border-top: 1px solid var(--hairline);
 }
 
+/* ---- Design work gallery ---- */
+.design-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.35rem;
+}
+
+.design-item {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius, 10px);
+  overflow: hidden;
+  transition:
+    border-color var(--transition),
+    background var(--transition),
+    transform var(--transition);
+}
+
+.design-item:hover {
+  border-color: var(--hairline-strong);
+  background: var(--surface-hover);
+  transform: translateY(-3px);
+}
+
+.design-item__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
+  transition: transform var(--transition);
+}
+
+.design-item:hover .design-item__img {
+  transform: scale(1.03);
+}
+
+.design-item__caption {
+  padding: 0.9rem 1.25rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--fg-40);
+  border-top: 1px solid var(--hairline);
+}
+
 /* ---- Experience timeline ---- */
 .timeline {
   list-style: none;
@@ -1172,12 +1219,24 @@ main {
 
   .skill-card,
   .project,
+  .design-item,
   .remote-card,
   .education-item,
   .contact-link {
     background: #fff;
     border: 1px solid #bbb;
     break-inside: avoid;
+  }
+
+  /* Anything not yet scrolled into view still has .reveal applied —
+     force it visible so a print of the full page isn't blank */
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .design-item:hover {
+    transform: none;
   }
 
   /* The horizontal rule between the timeline and the contact block

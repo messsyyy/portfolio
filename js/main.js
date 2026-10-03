@@ -102,6 +102,7 @@
       ".skill-card",
       ".tools-marquee",
       ".project",
+      ".design-item",
       ".timeline__item",
       ".remote-card",
       ".education-item",
@@ -113,7 +114,7 @@
     var revealEls = document.querySelectorAll(revealSelector);
 
     // Stagger cards inside grids (capped so big lists don't wait forever)
-    [".skills-grid", ".projects-list", ".remote-grid", ".education-list", ".contact-links"].forEach(
+    [".skills-grid", ".projects-list", ".design-grid", ".remote-grid", ".education-list", ".contact-links"].forEach(
       function (sel) {
         var parent = document.querySelector(sel);
         if (!parent) return;
