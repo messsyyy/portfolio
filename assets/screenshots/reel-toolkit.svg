@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" role="img" aria-label="Reel Editing Toolkit interface preview">
+  <defs>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1d4ed8"/>
+      <stop offset="1" stop-color="#0ea5e9"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" rx="12" fill="#ffffff" stroke="#dde4ee"/>
+  <!-- window chrome -->
+  <path d="M12 0h376a12 12 0 0 1 12 12v26H0V12A12 12 0 0 1 12 0z" fill="#f1f5f9"/>
+  <circle cx="18" cy="19" r="5" fill="#f87171"/>
+  <circle cx="36" cy="19" r="5" fill="#fbbf24"/>
+  <circle cx="54" cy="19" r="5" fill="#34d399"/>
+  <rect x="74" y="11" width="180" height="16" rx="8" fill="#e2e8f0"/>
+  <text x="84" y="23" font-family="Segoe UI, sans-serif" font-size="10" fill="#64748b">reel-toolkit.local</text>
+  <!-- title bar -->
+  <rect x="16" y="52" width="368" height="34" rx="8" fill="url(#bar)"/>
+  <text x="30" y="74" font-family="Segoe UI, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">Reel captions</text>
+  <rect x="306" y="59" width="66" height="20" rx="10" fill="#ffffff" opacity="0.9"/>
+  <text x="320" y="73" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#1d4ed8">RENDER</text>
+  <!-- 9:16 preview -->
+  <rect x="26" y="96" width="76" height="134" rx="6" fill="#0f172a"/>
+  <circle cx="64" cy="134" r="15" fill="#334155"/>
+  <path d="M38 190c2-22 16-30 26-30s24 8 26 30z" fill="#334155"/>
+  <rect x="26" y="176" width="76" height="28" fill="#0f172a" opacity="0.72"/>
+  <g font-family="Segoe UI, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">
+    <text x="64" y="188" fill="#ffffff">EVERY</text>
+    <text x="64" y="201" fill="#38bdf8">WORD</text>
+  </g>
+  <!-- steps -->
+  <text x="122" y="106" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#64748b">STEP</text>
+  <text x="330" y="106" font-family="Segoe UI, sans-serif" font-size="10" font-weight="bold" fill="#64748b">STATUS</text>
+  <g font-family="Segoe UI, sans-serif" font-size="11" fill="#334155">
+    <rect x="112" y="114" width="272" height="24" rx="6" fill="#f8fafc"/>
+    <text x="122" y="130">Transcribe audio</text><text x="330" y="130" fill="#16a34a" font-weight="bold">Done</text>
+    <rect x="112" y="142" width="272" height="24" rx="6" fill="#ffffff"/>
+    <text x="122" y="158">Time each word</text><text x="330" y="158" fill="#16a34a" font-weight="bold">Done</text>
+    <rect x="112" y="170" width="272" height="24" rx="6" fill="#f8fafc"/>
+    <text x="122" y="186">Build captions</text><text x="330" y="186" fill="#16a34a" font-weight="bold">Done</text>
+    <rect x="112" y="198" width="272" height="24" rx="6" fill="#ffffff"/>
+    <text x="122" y="214">Render video</text><text x="330" y="214" fill="#1d4ed8" font-weight="bold">Ready</text>
+  </g>
+</svg>

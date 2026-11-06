@@ -1,6 +1,6 @@
 # Lucky Mark Abitong — Portfolio Website
 
-Single-page static portfolio for **Lucky Mark M. Abitong**, targeting Executive Assistant / remote administrative roles with US, UK, and AU employers.
+Single-page static portfolio for **Lucky Mark M. Abitong**, targeting Executive Assistant, remote administrative, and creative virtual assistant roles with US, UK, and AU employers.
 
 ## Stack
 
@@ -24,11 +24,13 @@ portfolio/
 1. Hero (headline, contact links, CTAs)
 2. Professional Summary
 3. Skills
-4. AI-Assisted Projects
-5. Experience
-6. Remote Work Setup
-7. Education
-8. Contact
+4. Tools
+5. Creative Work (client work described by type; no client names or footage)
+6. AI-Assisted Projects
+7. Experience
+8. Remote Work Setup
+9. Education
+10. Contact
 
 ## Run locally
 

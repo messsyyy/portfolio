@@ -50,9 +50,10 @@
       }
     });
 
-    // Close if window grows past mobile breakpoint
+    // Close if window grows past the hamburger breakpoint (see style.css)
+    var NAV_BREAKPOINT = 1180;
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 768) closeMenu();
+      if (window.innerWidth > NAV_BREAKPOINT) closeMenu();
     });
   }
 
